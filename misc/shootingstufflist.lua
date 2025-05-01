@@ -1,0 +1,8 @@
+--[[
+- mm2 aim trainer: trainer, 1v1, 2v2, 5v5, ffa, 50p, battle royal
+- mm2 duels: 1v1, 2v2, 3v3, 4v4, ffa
+- mm2 npcs: npc
+]]
+local mm2aimtrainer = {6924758805, 13196740950, 13196759249, 13230577371, 13304946831, 13305007542, 14934765043}
+local mm2duels = {13970956001 , 13970956870, 13998620445, 13998614964, 16801692465}
+local mm2npcs = 13935372661
