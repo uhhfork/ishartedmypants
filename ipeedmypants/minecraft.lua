@@ -4,6 +4,10 @@ local Library = loadstring(game:HttpGetAsync("https://github.com/ActualMasterOog
 local SaveManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/SaveManager.luau"))()
 local InterfaceManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/InterfaceManager.luau"))()
 
+local plrs = game:GetService("Players")
+
+local lp = plrs.LocalPlayer
+
 local Window = Library:CreateWindow{
     Title = "I hate digging >:(",
     SubTitle = "by fork",
@@ -15,29 +19,65 @@ local Window = Library:CreateWindow{
     MinimizeKey = Enum.KeyCode.LeftControl
 }
 
-local Tabs = {
-    Info = Window:CreateTab{
+local tab = {
+    info = Window:CreateTab{
         Title = "Information",
         Icon = "info"
     },
-    Utilities = Window:CreateTab{
+    utils = Window:CreateTab{
         Title = "Utilities"
         Icon = "database"
     },
-    Misc = Window:CreateTab{
+    misc = Window:CreateTab{
         Title = "Miscellaneous"
         Icon = "flask-conical"
     },
-    Farm = Window:CreateTab{
+    farm = Window:CreateTab{
         Title = "Farm"
         Icon = "banknote"
     },
-    Settings = Window:CreateTab{
+    setting = Window:CreateTab{
         Title = "Settings",
         Icon = "cog"
     },
-    Credit = Window:CreateTab{
+    credit = Window:CreateTab{
         Title = "Credit"
         Icons = "pencil"
     }
 }
+
+local lb = {
+    wins = lp.leaderstats.Wins.Value,
+    cash = ,
+    gems = ,
+}
+
+local function formatnum(num)
+    if not num then return "0" end
+    local formatted = tostring(math.floor(num))
+    return formatted:reverse():gsub("(%d%d%d)","%1,"):reverse():gsub("^,","")
+end
+
+
+
+local lpinfo = tab.info:CreateParagraph("playerinfo", {
+    Title = "Information",
+    Content = "Please wait..."
+})
+
+local contentformat = [[
+Display Name: %s
+Username: %s
+Wins: %s
+Cash: %s
+Gems: %s
+]]
+
+local content = string.format(
+    contentformat,
+    lp.DisplayName,
+    lp.Name,
+    formatnum(lb.wins),
+    formatnum(lb.cash),
+    formatnum(lb.gems),
+)
